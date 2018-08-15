@@ -11,12 +11,14 @@ public class Student {
     private int age;
     private int enrolmentNumber;
     private Mentor mentor;
+    private Course course;
 
-    public Student(String name, int age, int enrolmentNumber, Mentor mentor) {
+    public Student(String name, int age, int enrolmentNumber, Mentor mentor, Course course) {
         this.name = name;
         this.age = age;
         this.enrolmentNumber = enrolmentNumber;
         this.mentor = mentor;
+        this.course = course;
     }
 
     public Student() {
@@ -68,5 +70,15 @@ public class Student {
 
     public void setMentor(Mentor mentor) {
         this.mentor = mentor;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }
