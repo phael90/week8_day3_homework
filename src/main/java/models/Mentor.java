@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "mentors")
 public class Mentor {
 
     private int id;
@@ -9,6 +13,12 @@ public class Mentor {
         this.name = name;
     }
 
+    public Mentor() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -17,6 +27,7 @@ public class Mentor {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
